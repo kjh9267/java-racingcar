@@ -10,4 +10,10 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public boolean canGo(final int input) {
+        final boolean isBetweenFourAndNine = ((4 <= input) && (input <= 9));
+
+        return isBetweenFourAndNine;
+    }
 }
