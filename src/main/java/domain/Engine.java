@@ -1,9 +1,19 @@
 package domain;
 
+import java.util.Objects;
+
 public class Engine {
     private static final int MINIMUM_ENGINE_VALUE = 0;
     private static final int MAXIMUM_ENGINE_VALUE = 9;
     private static final int MINIMUM_RUNNING_VALUE = 4;
+    public static final int INITIAL_RUNNING_COUNT = 0;
+    public static final int RUNNING_UNIT = 1;
+
+    private int runningCount;
+
+    public Engine() {
+        this.runningCount = INITIAL_RUNNING_COUNT;
+    }
 
     public boolean canRunning(final int input) {
         validateValue(input);
@@ -17,13 +27,24 @@ public class Engine {
         }
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
+    public void run() {
+        runningCount += RUNNING_UNIT;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return obj instanceof Engine;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Engine engine = (Engine) o;
+        return runningCount == engine.runningCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(runningCount);
+    }
+
+    public int getRunningCount() {
+        return runningCount;
     }
 }
