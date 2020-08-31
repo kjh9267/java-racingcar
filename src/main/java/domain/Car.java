@@ -21,7 +21,7 @@ public class Car {
         }
     }
 
-    public void move(final int value) {
+    public void moveOrNotBy(final int value) {
         if (engine.canRunning(value)) {
             engine.run();
         }
@@ -29,6 +29,10 @@ public class Car {
 
     public int findCurrentPosition() {
         return engine.getRunningCount();
+    }
+
+    public boolean isWinner(int winningValue) {
+        return findCurrentPosition() == winningValue;
     }
 
     public String getName() {

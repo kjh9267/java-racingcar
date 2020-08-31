@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -54,10 +55,10 @@ public class CarTest {
     void moveTest() {
         final Car k3 = new Car("k3");
 
-        car.move(9);
-        k3.move(9);
-        car.move(0);
-        k3.move(0);
+        car.moveOrNotBy(9);
+        k3.moveOrNotBy(9);
+        car.moveOrNotBy(0);
+        k3.moveOrNotBy(0);
 
         assertThat(car.findCurrentPosition()).isEqualTo(k3.findCurrentPosition());
     }
@@ -65,11 +66,34 @@ public class CarTest {
     @DisplayName("2만큼 움직인 자동차의 현재 위치가 2인지 확인한다.")
     @Test
     void findCurrentPositionTest() {
-        car.move(9);
-        car.move(8);
+        car.moveOrNotBy(9);
+        car.moveOrNotBy(8);
 
         final int currentPosition = car.findCurrentPosition();
 
         assertThat(currentPosition).isEqualTo(2);
+    }
+
+    @DisplayName("5칸 이동한 차와 우승자의 값이 주어졌을 때 우승자인지 판별")
+    @ParameterizedTest
+    @MethodSource("provideInputForIsWinner")
+    void isWinnerTest(int winningValue, boolean expected) {
+        final int carPosition = 5;
+
+        for (int i = 0; i < carPosition; i++) {
+            car.moveOrNotBy(9);
+        }
+
+        assertThat(car.isWinner(winningValue))
+                .isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideInputForIsWinner() {
+        return Stream.of(
+                Arguments.of(5, true),
+                Arguments.of(6, false),
+                Arguments.of(7, false),
+                Arguments.of(8, false)
+        );
     }
 }
