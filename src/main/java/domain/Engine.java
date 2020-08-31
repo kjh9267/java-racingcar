@@ -6,8 +6,8 @@ public class Engine {
     private static final int MINIMUM_ENGINE_VALUE = 0;
     private static final int MAXIMUM_ENGINE_VALUE = 9;
     private static final int MINIMUM_RUNNING_VALUE = 4;
-    public static final int INITIAL_RUNNING_COUNT = 0;
-    public static final int RUNNING_UNIT = 1;
+    private static final int INITIAL_RUNNING_COUNT = 0;
+    private static final int RUNNING_UNIT = 1;
 
     private int runningCount;
 

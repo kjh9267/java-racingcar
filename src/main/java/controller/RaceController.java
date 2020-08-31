@@ -16,6 +16,7 @@ public class RaceController {
         final int round = inputRound();
 
         racing(race, round);
+
     }
 
     private static void racing(Race race, int round) {
