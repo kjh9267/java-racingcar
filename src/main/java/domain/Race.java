@@ -17,6 +17,12 @@ public class Race {
         }
     }
 
+    public void racingBy(int round) {
+        for (int i = 0; i < round; i++) {
+            this.racingOneRound();
+        }
+    }
+
     public List<Car> getCars() {
         return cars;
     }

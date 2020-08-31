@@ -37,4 +37,10 @@ public class RaceTest {
     void racingOneRoundTest() {
         race.racingOneRound();
     }
+
+    @DisplayName("레이스 전달받은 횟수만큼 라운드 진행 동작 확인")
+    @Test
+    void racingByTest() {
+        race.racingBy(4);
+    }
 }
