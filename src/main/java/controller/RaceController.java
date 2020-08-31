@@ -16,7 +16,12 @@ public class RaceController {
         final int round = inputRound();
 
         racing(race, round);
+        winResult(race);
+    }
 
+    private static void winResult(Race race) {
+        List<Car> winners = race.findWinners();
+        OutputView.printRaceResult(winners);
     }
 
     private static void racing(Race race, int round) {

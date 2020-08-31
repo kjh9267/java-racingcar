@@ -2,6 +2,7 @@ package domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> cars;
@@ -41,5 +42,13 @@ public class Race {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> findWinners() {
+        int winningValue = calculateWinningValue();
+
+        return cars.stream()
+                .filter(car -> car.isWinner(winningValue))
+                .collect(Collectors.toList());
     }
 }

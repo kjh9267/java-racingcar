@@ -80,4 +80,26 @@ public class RaceTest {
 
         assertThat(race.calculateWinningValue()).isEqualTo(3);
     }
+
+    @DisplayName("우승자들이 2명일 때 올바르게 찾는지 확인")
+    @Test
+    void findWinnersTest() {
+        final Car car1 = new Car("a");
+        car1.moveOrNotBy(9);
+        car1.moveOrNotBy(9);
+        car1.moveOrNotBy(9);
+
+        final Car car2 = new Car("b");
+        car2.moveOrNotBy(9);
+        car2.moveOrNotBy(9);
+
+        final Car car3 = new Car("c");
+        car3.moveOrNotBy(9);
+        car3.moveOrNotBy(9);
+        car3.moveOrNotBy(9);
+
+        final Race race = new Race(Arrays.asList(car1, car2, car3), new RandomGenerator());
+
+        assertThat(race.findWinners().size()).isEqualTo(2);
+    }
 }

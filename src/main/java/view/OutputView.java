@@ -3,6 +3,10 @@ package view;
 import domain.Car;
 import domain.Race;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class OutputView {
     private static final String DASH = "-";
     private static final String NEW_LINE = "\n";
@@ -23,5 +27,13 @@ public class OutputView {
         }
 
         System.out.println(stringBuilder.toString());
+    }
+
+    public static void printRaceResult(List<Car> winners) {
+        String result = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(String.format("%s가 최종 우승했습니다.", result));
     }
 }
