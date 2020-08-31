@@ -12,7 +12,13 @@ import java.util.stream.Collectors;
 public class RaceController {
 
     public static void run() {
-        createRace();
+        final Race race = createRace();
+        final int round = inputRound();
+
+    }
+
+    private static int inputRound() {
+        return InputView.readRound();
     }
 
     private static Race createRace() {
