@@ -1,19 +1,15 @@
 package domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Cars {
-    private final ArrayList<Car> cars;
+    private final List<Car> cars;
 
-    public Cars() {
-        cars = new ArrayList<>();
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void addCar(Car car) {
-        cars.add(car);
-    }
-
-    public ArrayList<Car> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 }
