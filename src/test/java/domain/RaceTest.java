@@ -17,18 +17,24 @@ public class RaceTest {
                 new Car("k3"),
                 new Car("k5"),
                 new Car("k7")
-        ));
+        ), new RandomGenerator());
     }
 
-    @DisplayName("Cars 클래스 생성자 테스트")
+    @DisplayName("Race 클래스 생성자 테스트")
     @Test
     void constructorTest() {
         final Race race = new Race(Arrays.asList(
                 new Car("k3"),
                 new Car("k5"),
                 new Car("k7")
-        ));
+        ), new RandomGenerator());
 
         assertThat(race).isInstanceOf(Race.class);
+    }
+
+    @DisplayName("레이스 한 라운드 진행 테스트 정상 동작 확인")
+    @Test
+    void racingOneRoundTest() {
+        race.racingOneRound();
     }
 }
