@@ -15,6 +15,14 @@ public class RaceController {
         final Race race = createRace();
         final int round = inputRound();
 
+        racing(race, round);
+    }
+
+    private static void racing(Race race, int round) {
+        for (int i = 0; i < round; i++) {
+            race.racingOneRound();
+            OutputView.printRoundResult(race);
+        }
     }
 
     private static int inputRound() {
